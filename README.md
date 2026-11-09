@@ -28,14 +28,16 @@ Static HTML, CSS and two small scripts. No build step.
 
 ## Deploy as its own site
 
-1. Push this folder to GitHub (it already sits inside the repo).
-2. In Vercel, create a new project from the same repository.
-3. Set **Root Directory** to `cryptocurrency-website`.
-4. Framework preset: **Other**. Build command: empty. Output directory: leave empty.
-5. Deploy, then open the new domain.
+This folder is its own repository, `Kashifmax2/cryptocurrency-website`, with these files at
+the root. It also sits inside the larger ads repo, which is why older notes mention a
+`cryptocurrency-website` path; ignore that here.
 
-Do not point the new domain at the existing ads project. The ad networks expect a
-separate property, and both sites would fight over the same paths.
+1. In Vercel, **New Project** and import `Kashifmax2/cryptocurrency-website`.
+2. Framework preset: **Other**. Build command: empty. Output directory: empty.
+3. Deploy, then open the new domain.
+
+Do not add this to the existing ads project. The ad networks expect a separate property,
+and both would fight over the same paths.
 
 ## Add the ad codes
 
