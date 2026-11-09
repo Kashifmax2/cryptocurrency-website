@@ -21,6 +21,7 @@ Static HTML, CSS and two small scripts. No build step.
 | `contact.html` | Contact form and security note |
 | `privacy.html` | Cookies, ad partners, data rights |
 | `terms.html` | Information only, no advice |
+| `monetag.html` | URL-only sponsored page (`/monetag`) for Monetag, noindex and not linked |
 | `styles.css` | Tokens, type, layout, ad bands |
 | `ads.js` | Ad codes, one key per slot |
 | `site.js` | Ad loader: iframe banners, lazy mount, sticky anchor |
@@ -85,6 +86,29 @@ To make it send, set the endpoint in one place:
 
 `site.js` posts the fields to that URL, clears the form on success, and writes the result
 into the `data-form-status` line under the button. No other edit is needed.
+
+## Sponsored page (`/monetag`)
+
+`monetag.html` is a URL-only advertising page on this domain. Nothing links to it, and it
+carries `noindex, nofollow`:
+
+```
+https://cryptocurrency-website-silk.vercel.app/monetag
+```
+
+It runs the Monetag zones and a wall of sponsored tiles that open the Monetag Direct Link
+(zone `12224273`) in a new tab. It exists so the crypto property can carry Monetag traffic
+without mixing every provider into one site.
+
+Monetag ties a zone to a verified site. The meta is already in this page and in
+`index.html`:
+
+```html
+<meta name="monetag" content="f4abe85b2963045eeecfe285f434191b">
+```
+
+Add `cryptocurrency-website-silk.vercel.app` as a site in Monetag and let it verify before
+expecting the zone scripts to serve here. The Direct Link tiles work without verification.
 
 ## Domain verification for networks
 
