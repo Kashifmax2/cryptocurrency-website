@@ -96,9 +96,34 @@ carries `noindex, nofollow`:
 https://cryptocurrency-website-silk.vercel.app/monetag
 ```
 
-It runs the Monetag zones and a wall of sponsored tiles that open the Monetag Direct Link
-(zone `12224273`) in a new tab. It exists so the crypto property can carry Monetag traffic
+It runs Monetag and a wall of sponsored tiles that open the Monetag Direct Link (zone
+`12224273`) in a new tab. It exists so the crypto property can carry Monetag traffic
 without mixing every provider into one site.
+
+### Zones on this page
+
+| Zone | Format | Where |
+|---|---|---|
+| `307882` | Multitag (popunder, push, vignette, in-page push) | all in one tag |
+| `12224255` | OnClick (popunder) | all in one tag |
+| `12226779` | In-Page Push (banner) | all in one tag |
+| `12224273` | Direct Link | the tiles and the two sponsor strips |
+
+### Why there are no 728x90 boxes here
+
+Monetag does not sell a fixed-size display banner. Its formats are Multitag, OnClick
+(popunder), Push, In-Page Push, Vignette Banner and Direct Link only. "Banner" in the
+Monetag dashboard means the **In-Page Push (banner)** zone type, which renders a floating
+native card, not a 728x90 IAB slot.
+
+So the visible, always-on inventory on this page is:
+
+- the In-Page Push zone, which earns impressions, and
+- the sponsor tiles and the two sponsor strips, which are house creatives pointing at the
+  Direct Link and earn on clicks.
+
+If you want real 728x90 / 300x250 / 468x60 boxes on this domain, add the domain to a
+network that sells display banners (Adsterra or ProfitOn) and paste those codes in.
 
 Monetag ties a zone to a verified site. The meta is already in this page and in
 `index.html`:

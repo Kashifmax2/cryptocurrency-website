@@ -916,10 +916,6 @@ textarea:active { border-color: var(--brick); }
 }
 
 /* ===========================================================
-   Print
-   =========================================================== */
-
-/* ===========================================================
    Sponsored offers page (/monetag)
    =========================================================== */
 
@@ -927,6 +923,7 @@ textarea:active { border-color: var(--brick); }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: var(--space-lg);
+  margin-block-start: var(--space-2xl);
 }
 
 .offer-card {
@@ -963,6 +960,70 @@ textarea:active { border-color: var(--brick); }
 }
 
 .offer-card__arrow { font-size: 1.1rem; }
+
+/* Horizontal sponsor strip. A whole row, so it reads as an ad without
+   pretending to be a network banner the network cannot serve. */
+.promo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-sm) var(--space-lg);
+  padding: var(--space-lg);
+  border: var(--rule-hair) solid var(--rule);
+  background: var(--paper-2);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.promo:hover,
+.promo:focus-visible {
+  background: var(--paper-3);
+  border-color: var(--ink);
+}
+
+.promo__tag {
+  font: 500 var(--text-xs)/1.4 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.promo__body { display: block; }
+
+.promo__title {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.promo__dek {
+  display: block;
+  margin-block-start: var(--space-2xs);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.promo__cta {
+  font: 500 var(--text-xs)/1.4 var(--body);
+  white-space: nowrap;
+  border-block-end: var(--rule-hair) solid currentColor;
+  padding-block-end: 2px;
+}
+
+@media (max-width: 600px) {
+  .promo { grid-template-columns: minmax(0, 1fr); }
+  .promo__cta { justify-self: start; }
+}
+
+/* Second band on a page that sits directly under another band */
+.band--join { padding-block-start: 0; }
+
+/* ===========================================================
+   Print
+   =========================================================== */
 
 @media print {
   .masthead__bar,
