@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keys, seeds and the cost of custody, Chainwise</title>
+  <meta name="description" content="What a crypto wallet stores, how a seed phrase derives keys, the difference between hot and cold storage, and the mistakes that empty accounts.">
+  <meta name="theme-color" content="#efeadf">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171613'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23efeadf'%3EC%3C/text%3E%3C/svg%3E">
+  <meta name="profiton-domain-verification" content="e95c9ff57c43ef7f27b93172f4b1ba4f611fa2ead5712ec9dd052ca87fd2babe">
+  <meta property="og:title" content="Keys, seeds and the cost of custody">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&family=Spectral:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:wght@500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <p><time datetime="2026-11-05">Thursday, 5 November 2026</time></p>
+    <p>A working guide, not a price feed</p>
+    <p>Independent desk. Advertising is marked.</p>
+  </div>
+  <div class="wrap masthead__brand">
+    <a class="wordmark" href="index.html">Chainwise</a>
+  </div>
+  <nav class="nav wrap" aria-label="Sections">
+    <a href="learn.html">Guides</a>
+    <a href="learn.html#markets">Markets</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<section class="ad" data-band="top" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="top" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <header class="article-head">
+      <h1>Keys, seeds and the cost of custody</h1>
+      <p class="article-head__stand">A wallet holds the ability to sign, not the coins.</p>
+      <p class="byline">By the Chainwise desk, <time datetime="2026-11-05">5 November 2026</time></p>
+    </header>
+
+    <div class="article-layout">
+      <article class="article-body">
+        <p>When someone says they sent coins to a wallet, they mean they wrote an entry on a public ledger that only a particular key can spend. The wallet is a signing device and a bookkeeper. The balance lives on the chain, not in the app.</p>
+
+        <p>That is why a wallet can be restored on a new phone, and why a stolen seed phrase cannot be undone by reinstalling software. The key is the account.</p>
+
+        <h2>From seed to address</h2>
+
+        <p>A private key is a very large number. From it, a public key is derived, and from the public key an address is derived. The maths runs one way: you can produce an address from a key, but you cannot recover the key from the address.</p>
+
+        <p>Modern wallets do not make you back up one key per address. They start from a seed phrase, usually twelve or twenty four words, and derive a tree of keys from it. The words encode random entropy; the order matters; the last word is a checksum. Anyone who has the phrase in the right order has every key in that tree.</p>
+
+        <p>Some wallets add an optional passphrase, sometimes called the twenty fifth word. It creates a separate wallet from the same seed. Lose the passphrase and the funds are still on the chain, but the seed alone will not open them. Keep it separate from the seed, and write down that it exists.</p>
+
+        <h2>Hot, cold and the middle</h2>
+
+        <p>A hot wallet runs on a device that is online. It is convenient, it is the right tool for small balances and daily use, and it is exposed to every malicious page and download that reaches that device.</p>
+
+        <p>A cold wallet keeps the key offline. A hardware device is the common form: the key stays inside, and the device signs a transaction after showing you the amount and the destination on its own screen. A paper backup is colder still, and far easier to lose or damage.</p>
+
+        <p>The practical split is by amount and by frequency. Keep spending money in a hot wallet. Keep savings in a cold setup with a tested recovery. Do not move a large balance into a new device on the same day you are learning how it works.</p>
+
+        <h2>The four failures</h2>
+
+        <p><strong>Storing the seed where a thief can read it.</strong> A photo, a cloud note, an email draft, a password manager entry, a screenshot in a chat. Any of these turns a device compromise into a total loss. Paper in a safe and metal for fire resistance are boring and correct.</p>
+
+        <p><strong>Typing the seed into a website.</strong> No legitimate wallet, exchange or support agent ever needs your seed phrase. A page that asks for it is a theft in progress, even if it looks like the wallet you already use.</p>
+
+        <p><strong>Signing what you did not read.</strong> Approvals, permits and blind signatures can give a contract permission to move your tokens later. A signature can outlive the site that asked for it. Read the request, and revoke old approvals when you stop using a service.</p>
+
+        <p><strong>Not planning for absence.</strong> Keys that only one living person can reach are a single point of failure. An inheritance plan can be as simple as sealed instructions with a lawyer, or as structured as a multisig where two of three people must agree. The plan must survive you, not just your hardware.</p>
+
+        <blockquote>
+          <p>Self-custody removes the custodian and replaces it with your own operational discipline. That is the whole trade.</p>
+        </blockquote>
+
+        <h2>Custody is a spectrum</h2>
+
+        <p>An exchange account is a claim on a company. It is convenient, it can be insured or regulated, and it can also freeze withdrawals, fail, or lose the keys it promised to hold. A self-custody wallet removes the counterparty and adds the risk of your own mistakes, including phishing, device compromise and lost backups.</p>
+
+        <p>Multisig sits in between. Several keys, held in different places, must approve a transfer. It removes the single point of failure without handing control to a company, at the cost of more setup and more places where a mistake can hide.</p>
+
+        <h2>A checklist worth keeping</h2>
+
+        <ul>
+          <li>Write the seed by hand, check every word twice, and never store a digital copy.</li>
+          <li>Test a recovery on a spare device before the balance is large.</li>
+          <li>Buy hardware from the maker, never from a marketplace seller, and set it up yourself.</li>
+          <li>Treat every unsolicited message about your wallet as an attack.</li>
+          <li>Keep a small hot balance and a large cold balance, and move between them on purpose.</li>
+          <li>Tell one trusted person that a plan exists, even if they do not hold the key.</li>
+        </ul>
+
+        <div class="note">
+          <h2>The one rule</h2>
+          <p>The seed phrase is the money. If a person, page or app asks for it, the conversation is over.</p>
+        </div>
+
+        <p><a href="reading-the-market.html">Next: order books, spreads and liquidity</a></p>
+      </article>
+
+      <aside class="rail" aria-label="Sidebar">
+        <section class="ad" data-band="side-1" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-1" data-size="rectangle"></div>
+          </div>
+        </section>
+
+        <nav aria-label="Related guides">
+          <p class="rail__head">Related guides</p>
+          <ul class="related">
+            <li><a href="what-is-bitcoin.html">What bitcoin is, and is not</a></li>
+            <li><a href="how-blockchains-work.html">How a block is sealed</a></li>
+            <li><a href="crypto-scams.html">The scams that keep working</a></li>
+            <li><a href="glossary.html">Glossary of terms</a></li>
+          </ul>
+        </nav>
+
+        <section class="ad" data-band="side-2" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-2" data-size="rectangle"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<section class="ad" data-band="bottom" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="bottom" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="wrap colophon__grid">
+    <div>
+      <p class="colophon__mark">Chainwise</p>
+      <p class="colophon__line">An independent crypto desk. Guides are written for readers, not for price targets.</p>
+    </div>
+    <nav aria-label="Sections">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="learn.html">Guides</a></li>
+        <li><a href="learn.html#markets">Markets</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About the desk</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Site">
+      <h2>Site</h2>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="index.html">Front page</a></li>
+      </ul>
+    </nav>
+    <p class="colophon__note">Chainwise is independent. Advertising is marked on every page. Nothing here is investment advice. Crypto assets can fall to zero, and a lost key is a lost balance.</p>
+  </div>
+</footer>
+
+<div class="anchor" id="anchor-ad" hidden>
+  <button class="anchor__close" id="anchor-close" type="button" aria-label="Close advertisement">×</button>
+  <div class="anchor__inner">
+    <div class="ad-slot" id="anchor-slot" data-slot="anchor" data-size="anchor"></div>
+  </div>
+</div>
+
+<div class="ad-slot ad-slot-hidden" data-slot="native" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="pop" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="social" aria-hidden="true"></div>
+
+<script src="ads.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

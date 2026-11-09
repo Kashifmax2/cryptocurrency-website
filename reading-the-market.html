@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order books, spreads and liquidity, Chainwise</title>
+  <meta name="description" content="How a crypto price is actually made: order books, spreads, slippage, market cap against fully diluted supply, perpetual funding and liquidation.">
+  <meta name="theme-color" content="#efeadf">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171613'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23efeadf'%3EC%3C/text%3E%3C/svg%3E">
+  <meta name="profiton-domain-verification" content="e95c9ff57c43ef7f27b93172f4b1ba4f611fa2ead5712ec9dd052ca87fd2babe">
+  <meta property="og:title" content="Order books, spreads and liquidity">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&family=Spectral:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:wght@500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <p><time datetime="2026-11-03">Tuesday, 3 November 2026</time></p>
+    <p>A working guide, not a price feed</p>
+    <p>Independent desk. Advertising is marked.</p>
+  </div>
+  <div class="wrap masthead__brand">
+    <a class="wordmark" href="index.html">Chainwise</a>
+  </div>
+  <nav class="nav wrap" aria-label="Sections">
+    <a href="learn.html">Guides</a>
+    <a href="learn.html#markets">Markets</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<section class="ad" data-band="top" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="top" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <header class="article-head">
+      <h1>Order books, spreads and liquidity</h1>
+      <p class="article-head__stand">The screen price is the last trade, not the next one.</p>
+      <p class="byline">By the Chainwise desk, <time datetime="2026-11-03">3 November 2026</time></p>
+    </header>
+
+    <div class="article-layout">
+      <article class="article-body">
+        <p>Every market is a queue of intentions. On an exchange, buyers post the highest price they will pay, sellers post the lowest they will accept, and the gap between the two is where the next trade happens. Nothing about crypto changes that. What changes is how many venues exist, how thin each book can get, and how much of the trading is borrowed.</p>
+
+        <h2>The book, in one screen</h2>
+
+        <p>The best bid is the top buy order. The best ask is the top sell order. The difference is the spread. If the best bid is 100 and the best ask is 100.10, the spread is ten basis points, and a round trip at market prices starts ten points behind.</p>
+
+        <p>Depth is the size resting behind those prices. A book with a hundred coins at the top is not deep; a book with ten thousand across five levels is. Depth is what decides how far the price moves when an impatient order arrives. That movement is slippage, and it is a real cost that never appears on a fee schedule.</p>
+
+        <p>Market makers earn the spread by quoting both sides and managing inventory. Takers pay it. If you place a limit order and wait, you may earn the spread instead, but you also accept the risk that the market leaves without you.</p>
+
+        <h2>Volume is not liquidity</h2>
+
+        <p>Volume counts trades that happened. Liquidity describes trades that could happen without moving the price. A pair can print a large volume on a handful of trades between related accounts and still have a book you cannot sell into. This is why reviewers look at depth and venue behaviour, not at the volume number alone.</p>
+
+        <p>Venues are fragmented. The same asset trades on dozens of exchanges at slightly different prices, and arbitrage keeps them close. In stressed moments the gaps widen, withdrawal queues appear, and the assumption that you can always move coins from one venue to another stops holding.</p>
+
+        <h2>Market cap against fully diluted</h2>
+
+        <p>Market cap multiplies the last price by the circulating supply. Fully diluted valuation uses the maximum supply instead. The two numbers can be far apart when a large share of tokens is locked, scheduled for release, or held by a foundation.</p>
+
+        <p>Neither number is a valuation in the sense a company has one. There is no cash flow to discount. Market cap says what the last trade implies about all units at that price, and it assumes everyone could sell there. In a thin market, they could not.</p>
+
+        <blockquote>
+          <p>A price is an agreement between two people at one moment. A market cap is that agreement multiplied by a supply.</p>
+        </blockquote>
+
+        <h2>Perpetuals and funding</h2>
+
+        <p>A perpetual future tracks the spot price without expiring. To keep it close, exchanges charge a funding payment between longs and shorts, usually every few hours. When longs are crowded and willing to pay, funding turns positive. When shorts are crowded, it turns negative.</p>
+
+        <p>Funding is a useful sentiment reading. It is also a cost. A position held through a long stretch of expensive funding can lose money even if the price does not move against it.</p>
+
+        <h2>Leverage and liquidation</h2>
+
+        <p>Leverage lets you post a fraction of the position value. The exchange holds the rest and sets a maintenance margin. If the position falls below that margin, the exchange closes it, often with a fee, and the loss comes out of your collateral.</p>
+
+        <p>Liquidations are forced market orders. They push the price further in the direction that caused them, which can trigger the next cluster of liquidations. This is why a sharp move often overshoots: the market is not only repricing, it is unwinding borrowed positions.</p>
+
+        <h2>Data hygiene</h2>
+
+        <p>On-chain data is not the same as buying. A large transfer between two wallets may be custody moving client funds, an exchange rebalancing, or a sale. Without knowing the addresses, the number is a rumour with decimals.</p>
+
+        <p>Exchange data is also not neutral. Trades can be wash traded, listings can be paid for, and a screen can show a last price that no one could trade at in size. Cross check two venues, read the book, and treat any single number as a sample rather than a fact.</p>
+
+        <div class="note">
+          <h2>What to check before an order</h2>
+          <p>Spread, depth at your size, maker and taker fees, funding if you use perpetuals, withdrawal limits, and the venue’s record through a stressed week. Those six checks explain most of the difference between the price you saw and the result you got.</p>
+        </div>
+
+        <p><a href="crypto-scams.html">Next: the scams that keep working</a></p>
+      </article>
+
+      <aside class="rail" aria-label="Sidebar">
+        <section class="ad" data-band="side-1" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-1" data-size="rectangle"></div>
+          </div>
+        </section>
+
+        <nav aria-label="Related guides">
+          <p class="rail__head">Related guides</p>
+          <ul class="related">
+            <li><a href="what-is-bitcoin.html">What bitcoin is, and is not</a></li>
+            <li><a href="how-blockchains-work.html">How a block is sealed</a></li>
+            <li><a href="wallets-and-self-custody.html">Keys, seeds and the cost of custody</a></li>
+            <li><a href="glossary.html">Glossary of terms</a></li>
+          </ul>
+        </nav>
+
+        <section class="ad" data-band="side-2" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-2" data-size="rectangle"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<section class="ad" data-band="bottom" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="bottom" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="wrap colophon__grid">
+    <div>
+      <p class="colophon__mark">Chainwise</p>
+      <p class="colophon__line">An independent crypto desk. Guides are written for readers, not for price targets.</p>
+    </div>
+    <nav aria-label="Sections">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="learn.html">Guides</a></li>
+        <li><a href="learn.html#markets">Markets</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About the desk</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Site">
+      <h2>Site</h2>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="index.html">Front page</a></li>
+      </ul>
+    </nav>
+    <p class="colophon__note">Chainwise is independent. Advertising is marked on every page. Nothing here is investment advice. Crypto assets can fall to zero, and a lost key is a lost balance.</p>
+  </div>
+</footer>
+
+<div class="anchor" id="anchor-ad" hidden>
+  <button class="anchor__close" id="anchor-close" type="button" aria-label="Close advertisement">×</button>
+  <div class="anchor__inner">
+    <div class="ad-slot" id="anchor-slot" data-slot="anchor" data-size="anchor"></div>
+  </div>
+</div>
+
+<div class="ad-slot ad-slot-hidden" data-slot="native" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="pop" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="social" aria-hidden="true"></div>
+
+<script src="ads.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

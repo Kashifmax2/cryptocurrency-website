@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How a block is sealed, Chainwise</title>
+  <meta name="description" content="Hashes, previous hashes, nonces and difficulty: how a block commits to the past, why rewriting history is expensive, and how proof of work differs from proof of stake.">
+  <meta name="theme-color" content="#efeadf">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171613'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23efeadf'%3EC%3C/text%3E%3C/svg%3E">
+  <meta name="profiton-domain-verification" content="e95c9ff57c43ef7f27b93172f4b1ba4f611fa2ead5712ec9dd052ca87fd2babe">
+  <meta property="og:title" content="How a block is sealed">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&family=Spectral:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:wght@500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <p><time datetime="2026-11-06">Friday, 6 November 2026</time></p>
+    <p>A working guide, not a price feed</p>
+    <p>Independent desk. Advertising is marked.</p>
+  </div>
+  <div class="wrap masthead__brand">
+    <a class="wordmark" href="index.html">Chainwise</a>
+  </div>
+  <nav class="nav wrap" aria-label="Sections">
+    <a href="learn.html">Guides</a>
+    <a href="learn.html#markets">Markets</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<section class="ad" data-band="top" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="top" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <header class="article-head">
+      <h1>How a block is sealed</h1>
+      <p class="article-head__stand">Chain the fingerprints and the past becomes expensive to edit.</p>
+      <p class="byline">By the Chainwise desk, <time datetime="2026-11-06">6 November 2026</time></p>
+    </header>
+
+    <div class="article-layout">
+      <article class="article-body">
+        <p>A block is a container. It holds a list of transfers, a header with a few fields, and a value that ties it to the block before it. The interesting part is not the container but the arithmetic that makes the tie hold.</p>
+
+        <h2>One fingerprint, four parts</h2>
+
+        <p>Every block header produces a hash: a fixed length string calculated from its contents. Change one character anywhere in the header and the hash changes completely. There is no way to work backwards from the hash to the text. You can only try candidates and check the result.</p>
+
+        <dl class="parts">
+          <div class="parts__item">
+            <dt>Previous hash</dt>
+            <dd>The fingerprint of the block before. This is the link in the chain.</dd>
+          </div>
+          <div class="parts__item">
+            <dt>Merkle root</dt>
+            <dd>One fingerprint that summarises every transfer in the block.</dd>
+          </div>
+          <div class="parts__item">
+            <dt>Nonce</dt>
+            <dd>A number the miner changes, over and over, to steer the hash.</dd>
+          </div>
+          <div class="parts__item">
+            <dt>Block hash</dt>
+            <dd>The result. The next block will carry it as its previous hash.</dd>
+          </div>
+        </dl>
+
+        <p>Because the header includes the previous hash, a change to block 800 also changes the hash of block 800, which breaks the link held by block 801, and so on to the present. To rewrite one old transfer you must redo every block after it, and you must do that work faster than the rest of the network extends the honest chain.</p>
+
+        <h2>Why a miner burns electricity</h2>
+
+        <p>Bitcoin asks miners to find a block hash below a target. The only way is to try nonces and hash again. The first miner to find a good one publishes the block and collects the reward plus fees. Everyone else checks it in milliseconds and moves on.</p>
+
+        <p>Difficulty sets the target. If blocks arrive faster than one every ten minutes, difficulty rises; if slower, it falls. The adjustment every two thousand and sixteen blocks keeps the race competitive no matter how much hardware joins.</p>
+
+        <p>The cost is the security. An attacker who wants to replace a recent block must outrun the honest network from that point. The deeper the block, the more work sits on top of it, and the more the attack costs. This is what people mean when they say a transaction is final: final enough that reversing it is a bad trade.</p>
+
+        <blockquote>
+          <p>Immutability is not a property of the database. It is a price set by the work above a block.</p>
+        </blockquote>
+
+        <h2>Proof of stake answers differently</h2>
+
+        <p>Ethereum replaced mining with staking in 2022. Validators lock coins as collateral, and the protocol picks one to propose each block. Other validators attest to what they see. If a validator signs two conflicting histories, it can lose part of its stake. The chain still links blocks by hash, but the cost of misbehaving is posted capital rather than spent electricity.</p>
+
+        <p>The trade is different, not free. Staking uses far less energy, and finality can be reached in minutes. It also concentrates responsibility in validators, and the rules that slash them are software, which means the design of those rules matters enormously.</p>
+
+        <h2>Forks, soft and hard</h2>
+
+        <p>Two miners can find valid blocks at almost the same moment. Nodes pick one and keep the other in reserve. The next block settles the question: the longer chain wins, and the shorter one is discarded. That is a temporary fork and it is routine.</p>
+
+        <p>A permanent fork is a rule change that some participants accept and others reject. A soft fork tightens the rules without splitting the network, and old nodes still see valid blocks. A hard fork loosens them, and nodes that do not upgrade end up on a different chain. When you hear that a coin forked, this is the process: two histories, two assets, and a market that decides what each is worth.</p>
+
+        <h2>What this does not solve</h2>
+
+        <p>Ordering is not truth. A chain can record a transfer that was made under duress, or one that follows a contract nobody should have signed. Consensus agrees on what happened, not on whether it should have happened.</p>
+
+        <p>Nor does it scale for free. Every node verifies every block, so capacity is deliberately expensive. Layer two systems move most payments off the main chain and settle the net result later, trading some guarantees for speed. That trade is where most of the current engineering effort sits.</p>
+
+        <div class="note">
+          <h2>The short version</h2>
+          <p>A block commits to the past through its previous hash. A miner or validator makes proposing a block costly. Depth makes reversal expensive. Everything else, fees, throughput and finality, follows from how those three pieces are tuned.</p>
+        </div>
+
+        <p><a href="wallets-and-self-custody.html">Next: keys, seeds and the cost of custody</a></p>
+      </article>
+
+      <aside class="rail" aria-label="Sidebar">
+        <section class="ad" data-band="side-1" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-1" data-size="rectangle"></div>
+          </div>
+        </section>
+
+        <nav aria-label="Related guides">
+          <p class="rail__head">Related guides</p>
+          <ul class="related">
+            <li><a href="what-is-bitcoin.html">What bitcoin is, and is not</a></li>
+            <li><a href="wallets-and-self-custody.html">Keys, seeds and the cost of custody</a></li>
+            <li><a href="reading-the-market.html">Order books, spreads and liquidity</a></li>
+            <li><a href="glossary.html">Glossary of terms</a></li>
+          </ul>
+        </nav>
+
+        <section class="ad" data-band="side-2" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-2" data-size="rectangle"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<section class="ad" data-band="bottom" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="bottom" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="wrap colophon__grid">
+    <div>
+      <p class="colophon__mark">Chainwise</p>
+      <p class="colophon__line">An independent crypto desk. Guides are written for readers, not for price targets.</p>
+    </div>
+    <nav aria-label="Sections">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="learn.html">Guides</a></li>
+        <li><a href="learn.html#markets">Markets</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About the desk</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Site">
+      <h2>Site</h2>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="index.html">Front page</a></li>
+      </ul>
+    </nav>
+    <p class="colophon__note">Chainwise is independent. Advertising is marked on every page. Nothing here is investment advice. Crypto assets can fall to zero, and a lost key is a lost balance.</p>
+  </div>
+</footer>
+
+<div class="anchor" id="anchor-ad" hidden>
+  <button class="anchor__close" id="anchor-close" type="button" aria-label="Close advertisement">×</button>
+  <div class="anchor__inner">
+    <div class="ad-slot" id="anchor-slot" data-slot="anchor" data-size="anchor"></div>
+  </div>
+</div>
+
+<div class="ad-slot ad-slot-hidden" data-slot="native" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="pop" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="social" aria-hidden="true"></div>
+
+<script src="ads.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

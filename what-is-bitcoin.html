@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What bitcoin is, and is not, Chainwise</title>
+  <meta name="description" content="A plain guide to bitcoin: the shared ledger, the fixed supply, how a payment settles, where the network strains, and the claims it does not make.">
+  <meta name="theme-color" content="#efeadf">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171613'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23efeadf'%3EC%3C/text%3E%3C/svg%3E">
+  <meta name="profiton-domain-verification" content="e95c9ff57c43ef7f27b93172f4b1ba4f611fa2ead5712ec9dd052ca87fd2babe">
+  <meta property="og:title" content="What bitcoin is, and is not">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&family=Spectral:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:wght@500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <p><time datetime="2026-11-09">Monday, 9 November 2026</time></p>
+    <p>A working guide, not a price feed</p>
+    <p>Independent desk. Advertising is marked.</p>
+  </div>
+  <div class="wrap masthead__brand">
+    <a class="wordmark" href="index.html">Chainwise</a>
+  </div>
+  <nav class="nav wrap" aria-label="Sections">
+    <a href="learn.html">Guides</a>
+    <a href="learn.html#markets">Markets</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<!-- ad: top -->
+<section class="ad" data-band="top" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="top" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <header class="article-head">
+      <h1>What bitcoin is, and is not</h1>
+      <p class="article-head__stand">A fixed supply, a shared ledger, and no issuer.</p>
+      <p class="byline">By the Chainwise desk, <time datetime="2026-11-09">9 November 2026</time></p>
+    </header>
+
+    <div class="article-layout">
+      <article class="article-body">
+        <p>Bitcoin is a set of rules and a record that thousands of computers keep in step. The record lists who can spend which coins and when a transfer happened. The rules decide whether a new transfer is allowed. Nobody owns the whole machine, and no administrator can quietly change a balance.</p>
+
+        <p>That is the useful sentence. Everything else, the price, the mining, the politics, follows from it. If you understand how the record is kept and how a change to it is accepted, the rest of the coverage becomes easier to read.</p>
+
+        <h2>A ledger with no owner</h2>
+
+        <p>Each computer that verifies the rules is a node. Nodes keep a copy of the full history, check every new block against the rules, and pass valid blocks to their peers. A block is a bundle of transfers with a header that commits to the bundle and to the block before it. Because each header includes the hash of its parent, changing an old block changes every block after it.</p>
+
+        <p>That chain of hashes is what makes the history expensive to rewrite. It is not impossible. It is priced. A party that controls more than half of the network’s mining power can, in principle, produce a competing chain faster than the honest one. The defence is that the attack costs real electricity and damages the asset the attacker is trying to profit from.</p>
+
+        <h2>What the rules fix</h2>
+
+        <p>The supply is capped at twenty one million coins. New coins enter only through the block reward, and that reward is cut in half every two hundred and ten thousand blocks, roughly every four years. No committee votes on the number. A change would require the overwhelming majority of nodes and miners to run different rules, which is a political event, not a software setting.</p>
+
+        <p>Blocks are aimed at ten minutes. If the network finds them faster, difficulty rises; if slower, it falls. The adjustment happens every two thousand and sixteen blocks. This is why the schedule is a target rather than a promise: the pace responds to how much mining power is pointed at the chain.</p>
+
+        <p>Bitcoin does not have accounts in the way a bank does. Coins sit in outputs, and a transfer spends one or more outputs and creates new ones. A wallet collects the outputs it can spend. The model sounds fussy until you see what it buys: a transaction is a self-contained statement, easy to verify and easy to batch.</p>
+
+        <h2>A payment is a message</h2>
+
+        <p>To pay, you sign a message with a private key. The signature proves the key controls the coins without revealing the key. The signed transaction goes to a pool of pending work called the mempool, where miners pick it up and include it in a block. Once a block is mined, the payment has one confirmation. Each later block adds another.</p>
+
+        <p>Confirmations are a measure of cost, not a certificate. A small payment can settle with one. A large one is safer after several. If the value at risk is lower than the cost of rewriting the chain, waiting longer buys very little.</p>
+
+        <blockquote>
+          <p>The number of confirmations is not a ritual. It is a price on reversing the transaction.</p>
+        </blockquote>
+
+        <h2>Where it strains</h2>
+
+        <p>Block space is limited, and demand for it varies. When many people want to settle at once, fees rise and the mempool grows. This is a market doing its job, but it can price out small payments and make a cheap transfer expensive during a busy week.</p>
+
+        <p>The public record is public. Addresses are pseudonymous, not anonymous. Anyone can follow the flow of coins between addresses, and exchanges are required in many jurisdictions to tie an address to an identity. Privacy depends on how you acquire, hold and spend, not on a checkbox.</p>
+
+        <p>Custody is absolute in a way bank customers are not used to. If you hold the key and lose it, no support line can restore the balance. If a custodian holds the key and fails, your claim is against a company, not against the chain. Both arrangements have failure modes, and neither is automatically safer.</p>
+
+        <p>Mining uses energy, most of it priced by the cheapest available power. The mix matters, and so does the local impact. A serious account of bitcoin has to include it rather than wave it away.</p>
+
+        <h2>What it is not</h2>
+
+        <p>Bitcoin is not a company. There is no earnings report, no chief executive, and no board to fire. It is also not a stablecoin: its price is set by a market and can fall sharply. It is not a guaranteed payment rail either. A busy network or a careless fee setting can leave a payment pending for hours.</p>
+
+        <p>Most of all, it is not a shortcut to a return. The asset has no cash flow, so any valuation is a judgement about future demand. That judgement can be reasonable, and it can still be wrong.</p>
+
+        <div class="note">
+          <h2>Keep these four</h2>
+          <p>Supply is capped. Blocks are ordered by work. Keys control coins. Confirmations are a cost, not a promise. If a claim about bitcoin cannot be traced back to one of those four, treat it as an opinion.</p>
+        </div>
+
+        <h2>Where to go next</h2>
+
+        <p>The next guide takes the block apart: what a hash does, why the previous hash matters, and what a miner is actually buying when it spends electricity. After that, custody: how seeds work and how people lose them.</p>
+
+        <p><a href="how-blockchains-work.html">How a block is sealed</a></p>
+        <p><a href="wallets-and-self-custody.html">Keys, seeds and the cost of custody</a></p>
+      </article>
+
+      <aside class="rail" aria-label="Sidebar">
+        <section class="ad" data-band="side-1" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-1" data-size="rectangle"></div>
+          </div>
+        </section>
+
+        <nav aria-label="Related guides">
+          <p class="rail__head">Related guides</p>
+          <ul class="related">
+            <li><a href="how-blockchains-work.html">How a block is sealed</a></li>
+            <li><a href="wallets-and-self-custody.html">Keys, seeds and the cost of custody</a></li>
+            <li><a href="reading-the-market.html">Order books, spreads and liquidity</a></li>
+            <li><a href="crypto-scams.html">The scams that keep working</a></li>
+          </ul>
+        </nav>
+
+        <section class="ad" data-band="side-2" hidden aria-label="Advertisement">
+          <div class="ad__inner">
+            <p class="ad__label">Advertisement</p>
+            <div class="ad-slot" data-slot="side-2" data-size="rectangle"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- ad: bottom -->
+<section class="ad" data-band="bottom" hidden aria-label="Advertisement">
+  <div class="wrap ad__inner">
+    <p class="ad__label">Advertisement</p>
+    <div class="ad-slot" data-slot="bottom" data-size="leaderboard"></div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="wrap colophon__grid">
+    <div>
+      <p class="colophon__mark">Chainwise</p>
+      <p class="colophon__line">An independent crypto desk. Guides are written for readers, not for price targets.</p>
+    </div>
+    <nav aria-label="Sections">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="learn.html">Guides</a></li>
+        <li><a href="learn.html#markets">Markets</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About the desk</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Site">
+      <h2>Site</h2>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="index.html">Front page</a></li>
+      </ul>
+    </nav>
+    <p class="colophon__note">Chainwise is independent. Advertising is marked on every page. Nothing here is investment advice. Crypto assets can fall to zero, and a lost key is a lost balance.</p>
+  </div>
+</footer>
+
+<div class="anchor" id="anchor-ad" hidden>
+  <button class="anchor__close" id="anchor-close" type="button" aria-label="Close advertisement">×</button>
+  <div class="anchor__inner">
+    <div class="ad-slot" id="anchor-slot" data-slot="anchor" data-size="anchor"></div>
+  </div>
+</div>
+
+<div class="ad-slot ad-slot-hidden" data-slot="native" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="pop" aria-hidden="true"></div>
+<div class="ad-slot ad-slot-hidden" data-slot="social" aria-hidden="true"></div>
+
+<script src="ads.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
