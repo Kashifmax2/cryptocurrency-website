@@ -153,6 +153,21 @@ The **In-page Banner code** from the same dashboard is a separate snippet that g
 where a banner should appear. It only works on a page that also carries the unified code.
 Send both and the banner slot can be wired into `ads.js`.
 
+## Bidvertiser (website verification)
+
+Bidvertiser verifies the site by finding its code on the homepage. The dashboard shows
+`<- Bidvertiser2108110 ->`; the homepage now carries it in three harmless forms:
+
+```html
+<meta name="bidvertiser-site-verification" content="Bidvertiser2108110">
+<body data-bidvertiser-verification="Bidvertiser2108110">
+<!-- <- Bidvertiser2108110 -> -->
+```
+
+Paste the 4-digit captcha in the dashboard and click **Verify**. Note that Bidvertiser's
+editorial team also wants sites that are at least 3 months old with steady organic traffic,
+so approval can lag verification on a brand-new domain.
+
 ## Domain verification for networks
 
 Every page carries the ProfitOn verification meta:
