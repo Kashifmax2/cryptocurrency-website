@@ -5,6 +5,29 @@ clear editorial and privacy pages, and ad slots that stay out of the reading col
 
 Static HTML, CSS and two small scripts. No build step.
 
+## Design system
+
+The site follows the MIT Technology Review editorial system, captured in
+`styles.css`:
+
+| Token | Value | Use |
+|---|---|---|
+| `--ink` | `#000000` | Masthead, footer, primary text, section rules |
+| `--canvas` | `#ffffff` | Page and card surface |
+| `--surface` | `#004142` | Hero and feature bands |
+| `--mint` | `#a0f5e9` | Action buttons, sponsor strips |
+| `--yellow` | `#f2dc6f` | Display headlines on teal, footer labels |
+| `--orange` | `#f5ad6e` | 2px accent on featured cards and the rail |
+
+Rules that keep the look coherent:
+
+- One family, Inter (a free stand-in for the licensed Neue Haas Grotesk Std).
+- Sharp corners, no border radius, no drop shadows, no gradients.
+- Yellow is only used for display type and labels on teal, never for body text.
+- Mint is reserved for actions. Orange is a 2px structural marker, not a fill.
+- 60px section rhythm, 1200px container, full-bleed teal only on the hero and one
+  feature band per page.
+
 ## Files
 
 | File | Purpose |
@@ -25,6 +48,7 @@ Static HTML, CSS and two small scripts. No build step.
 | `styles.css` | Tokens, type, layout, ad bands |
 | `ads.js` | Ad codes, one key per slot |
 | `site.js` | Ad loader: iframe banners, lazy mount, sticky anchor |
+| `sw.js` | Bidvertiser web-push service worker, must stay at the site root |
 | `vercel.json` | Clean URLs so `/learn` works without `.html` |
 
 ## Deploy as its own site
@@ -167,6 +191,19 @@ Bidvertiser verifies the site by finding its code on the homepage. The dashboard
 Paste the 4-digit captcha in the dashboard and click **Verify**. Note that Bidvertiser's
 editorial team also wants sites that are at least 3 months old with steady organic traffic,
 so approval can lag verification on a brand-new domain.
+
+### Push notifications worker
+
+`sw.js` sits at the site root and must stay there. It is the Bidvertiser web-push service
+worker (`push.bvsrv.com`, channel `128`) and imports their runtime:
+
+```js
+importScripts('//data.bvsrv.com/webpush/scripts/v1.1/sw.js');
+```
+
+Their dashboard registers it from `/sw.js` when you click **Verify** in Push Notifications.
+It has to be served from the root, not a subfolder, or the worker scope will not cover the
+site.
 
 ## Domain verification for networks
 
