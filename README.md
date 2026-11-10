@@ -135,6 +135,24 @@ Monetag ties a zone to a verified site. The meta is already in this page and in
 Add `cryptocurrency-website-silk.vercel.app` as a site in Monetag and let it verify before
 expecting the zone scripts to serve here. The Direct Link tiles work without verification.
 
+## Cointraffic (crypto ad network)
+
+Cointraffic is the display network for this site. Its **unified code** is on every content
+page (all pages except `/monetag`, which stays Monetag-only):
+
+```html
+<script async src="https://appsha-prm.ctengine.io/js/script.js?wkey=IxxqwRdPne"></script>
+```
+
+That tag loads every format Cointraffic activates for the site. The dashboard still shows
+the site as **Inactive** until a manager approves it, so no formats exist yet. Nothing else
+is needed for activation; the code is already in place and will start serving as soon as
+the account is approved.
+
+The **In-page Banner code** from the same dashboard is a separate snippet that goes exactly
+where a banner should appear. It only works on a page that also carries the unified code.
+Send both and the banner slot can be wired into `ads.js`.
+
 ## Domain verification for networks
 
 Every page carries the ProfitOn verification meta:
